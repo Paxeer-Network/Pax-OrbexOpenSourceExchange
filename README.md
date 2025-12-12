@@ -2,7 +2,7 @@
   <img src="https://www.paxeer.app/_astro/logo.DexyTq8F.png" alt="Paxeer Network" width="200">
 </p>
 
-# Orbex Exchange
+# Orbex Exchange By Paxeer Network Protocol
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8.svg)](https://golang.org/)
