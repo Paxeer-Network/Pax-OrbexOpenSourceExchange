@@ -1,0 +1,7 @@
+.text-muted {
+  @apply text-muted-500 hover:text-muted-600 dark:text-muted-400 dark:hover:text-muted-300;
+}
+
+.text-muted-active {
+  @apply text-muted-600 hover:text-muted-700 dark:text-muted-300 dark:hover:text-muted-200;
+}

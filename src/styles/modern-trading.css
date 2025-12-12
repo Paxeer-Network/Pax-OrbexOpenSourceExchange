@@ -1,0 +1,208 @@
+/* OCF-Perps Modern Trading UI Variables */
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 25 95% 53%; /* coral/orange-red: #f97316 */
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --radius: 0.75rem;
+    
+    /* Trading specific colors */
+    --main-accent: #f97316; /* coral/orange-red to match new logo */
+    --textbox-border: rgba(255, 255, 255, 0.1);
+    --textbox-background: rgba(0, 0, 0, 0.2);
+    
+    /* Long/Short colors for better contrast */
+    --color-long: #3df57b;
+    --color-long-dark: #44c64d;
+    --color-short: #ea435c;
+    --color-short-dark: #c72525;
+  }
+}
+
+/* Modern card styling */
+.modern-card {
+  @apply rounded-xl border bg-card text-card-foreground shadow-lg;
+}
+
+.modern-card-header {
+  @apply flex flex-col space-y-1.5 p-6;
+}
+
+.modern-card-content {
+  @apply p-6 pt-0;
+}
+
+/* Trading button styles */
+.btn-long {
+  @apply bg-long hover:bg-long-dark text-white font-medium rounded-lg px-4 py-2 transition-colors;
+}
+
+.btn-short {
+  @apply bg-short hover:bg-short-dark text-white font-medium rounded-lg px-4 py-2 transition-colors;
+}
+
+.btn-market {
+  @apply bg-long-short-button hover:bg-long-short-button-hover text-white font-medium rounded-lg px-4 py-2 transition-colors;
+}
+
+/* Modern orderbook styling */
+.orderbook-row {
+  @apply hover:bg-muted/50 transition-colors cursor-pointer border-l-2 border-transparent hover:border-primary/50;
+}
+
+.orderbook-ask {
+  @apply hover:border-short/50;
+}
+
+.orderbook-bid {
+  @apply hover:border-long/50;
+}
+
+/* Price color utilities */
+.text-long {
+  color: var(--color-long);
+}
+
+.text-short {
+  color: var(--color-short);
+}
+
+.bg-long-soft {
+  background-color: rgba(61, 245, 123, 0.1);
+}
+
+.bg-short-soft {
+  background-color: rgba(234, 67, 92, 0.1);
+}
+
+/* Modern input styling */
+.modern-input {
+  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Modern slider styling */
+.modern-slider {
+  @apply relative flex w-full touch-none select-none items-center;
+}
+
+.modern-slider-track {
+  @apply relative h-2 w-full grow overflow-hidden rounded-full bg-secondary;
+}
+
+.modern-slider-range {
+  @apply absolute h-full bg-primary;
+}
+
+.modern-slider-thumb {
+  @apply block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+}
+
+/* Animation improvements */
+.fade-in {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Modern table styling */
+.modern-table-container {
+  @apply bg-white dark:bg-zinc-950 rounded-lg overflow-hidden;
+}
+
+.modern-table-container .table {
+  @apply border-0;
+}
+
+.modern-table-container .table th {
+  @apply bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 font-medium text-xs uppercase tracking-wider border-0;
+}
+
+.modern-table-container .table td {
+  @apply border-0 text-zinc-900 dark:text-zinc-100;
+}
+
+.modern-table-container .table tbody tr {
+  @apply border-b border-zinc-100 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors;
+}
+
+.modern-table-container .table tbody tr:last-child {
+  @apply border-b-0;
+}
+
+/* Modern tab styling */
+.modern-tab-button {
+  @apply px-4 py-3 text-sm font-medium transition-all duration-200 border-b-2 hover:bg-zinc-50 dark:hover:bg-zinc-900;
+}
+
+.modern-tab-button.active {
+  @apply text-zinc-900 dark:text-zinc-100 border-blue-500 bg-zinc-50 dark:bg-zinc-900;
+}
+
+.modern-tab-button.inactive {
+  @apply text-zinc-600 dark:text-zinc-400 border-transparent;
+}
+
+/* Resizable panels */
+.resizable-handle {
+  @apply bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-colors;
+}
+
+.resizable-handle-vertical {
+  @apply w-1 cursor-col-resize;
+}
+
+.resizable-handle-horizontal {
+  @apply h-1 cursor-row-resize;
+}
+
+/* Animations */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px var(--color-primary-light); }
+  50% { box-shadow: 0 0 20px var(--color-primary-light), 0 0 30px var(--color-primary-light); }
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Glow effects for interactive elements */
+.glow-long:hover {
+  box-shadow: 0 0 20px rgba(61, 245, 123, 0.3);
+}
+
+.glow-short:hover {
+  box-shadow: 0 0 20px rgba(234, 67, 92, 0.3);
+}
+
+.glow-primary:hover {
+  box-shadow: 0 0 20px rgba(113, 66, 207, 0.3);
+}

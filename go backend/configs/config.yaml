@@ -1,0 +1,32 @@
+port: 4000
+log_level: "info"
+
+mysql:
+  host: "localhost"
+  port: 3306
+  database: "Orbex"
+  username: "root"
+  password: ""
+
+scylladb:
+  hosts:
+    - "127.0.0.1:9042"
+  keyspace: "trading"
+  username: ""
+  password: ""
+
+redis:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+
+jwt:
+  access_secret: "your-access-secret-key"
+  refresh_secret: "your-refresh-secret-key"
+  access_expiry: "30m"
+  refresh_expiry: "30d"
+
+rate_limit:
+  requests_per_minute: 100
+  window_seconds: 60

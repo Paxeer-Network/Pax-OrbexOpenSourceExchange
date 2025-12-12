@@ -1,0 +1,13 @@
+{
+    "watch": ["backend", ".env", "models", "config", "thread.ts", "packages"],
+    "ignore": [],
+    "ext": "ts,json",
+    "exec": "ts-node -r module-alias/register thread.ts",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "events": {
+      "restart": "echo 'Thread process restarted due to changes...'"
+    }
+  }
+  

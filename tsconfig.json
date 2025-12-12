@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    // "strict": true,
+    "noEmit": true,
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@b/*": ["./backend/*"],
+      "@db/*": ["./models/*"]
+    },
+    "strict": false,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "typeRoots": ["./types", "./node_modules/@types"]
+  },
+  "files": ["./types/index.d.ts", "./types/models/index.d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

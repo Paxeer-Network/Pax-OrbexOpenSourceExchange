@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  api-server:
+    build: ./go backend
+    ports:
+      - "4000:4000"
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_NAME=
+      - SCYLLA_CONNECT_POINTS=scylladb:9042
+      - SCYLLA_KEYSPACE=trading
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - mysql
+      - scylladb
+      - redis
+    command: ["./api-server"]
+
+  matching-engine:
+    build: ./go backend
+    environment:
+      - SCYLLA_CONNECT_POINTS=scylladb:9042
+      - SCYLLA_KEYSPACE=trading
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - scylladb
+      - redis
+    command: ["./matching-engine"]
+
+  background-workers:
+    build: ./go backend
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_NAME=
+      - SCYLLA_CONNECT_POINTS=scylladb:9042
+      - SCYLLA_KEYSPACE=trading
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - mysql
+      - scylladb
+      - redis
+    command: ["./background-workers"]
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE= Orbex
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./go backend/migrations:/docker-entrypoint-initdb.d
+
+  scylladb:
+    image: scylladb/scylla:5.2
+    ports:
+      - "9042:9042"
+    volumes:
+      - scylla_data:/var/lib/scylla
+      - ./go backend/migrations/scylla:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  mysql_data:
+  scylla_data:
+  redis_data:

@@ -1,0 +1,587 @@
+/* Step 1: Load Tailwind and config directives */
+@import "tailwindcss";
+
+/* OCF-Perps Modern Trading UI Styles */
+@import "./modern-trading.css";
+
+/* Step 2: Define design tokens and configuration in @theme */
+@theme {
+  /* Font sizes */
+  --text-xs: 0.6rem;
+  --text-sm: 0.7rem;
+  --text-md: 0.75rem;
+  --text-base: 0.8rem;
+  --text-lg: 0.9rem;
+  --text-xl: 1rem;
+  --text-2xl: 1.2rem;
+  --text-3xl: 1.4rem;
+  --text-4xl: 1.6rem;
+  --text-5xl: 1.8rem;
+  --text-6xl: 2rem;
+  --text-7xl: 2.2rem;
+  --text-8xl: 2.4rem;
+  --text-9xl: 2.6rem;
+  --text-10xl: 2.8rem;
+
+  /* Spacing scale */
+  --spacing-0_5: 0.1rem;
+  --spacing-1: 0.2rem;
+  --spacing-1_5: 0.3rem;
+  --spacing-2: 0.4rem;
+  --spacing-2_5: 0.5rem;
+  --spacing-3: 0.6rem;
+  --spacing-3_5: 0.7rem;
+  --spacing-4: 0.8rem;
+  --spacing-5: 1rem;
+  --spacing-6: 1.2rem;
+  --spacing-7: 1.4rem;
+  --spacing-8: 1.6rem;
+  --spacing-9: 1.8rem;
+  --spacing-10: 2rem;
+  --spacing-11: 2.2rem;
+  --spacing-12: 2.4rem;
+  --spacing-14: 2.8rem;
+  --spacing-16: 3.2rem;
+  --spacing-20: 4rem;
+  --spacing-24: 4.8rem;
+  --spacing-28: 5.6rem;
+  --spacing-32: 6.4rem;
+  --spacing-36: 7.2rem;
+  --spacing-40: 8rem;
+  --spacing-44: 8.8rem;
+  --spacing-48: 9.6rem;
+  --spacing-52: 10.4rem;
+  --spacing-56: 11.2rem;
+  --spacing-60: 12rem;
+  --spacing-64: 12.8rem;
+  --spacing-72: 14.4rem;
+  --spacing-80: 16rem;
+  --spacing-96: 19.2rem;
+
+  /* Breakpoints (basic ones) */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-xxl: 1536px;
+
+  /* Font family */
+  --font-sans: var(--font-inter);
+
+  /* Colors: muted, primary (indigo), info (sky), success (teal), warning (amber), danger (rose) */
+  /* muted - Pure black theme */
+  --color-muted-50: #ffffff;
+  --color-muted-100: #f8f9fa;
+  --color-muted-150: #e9ecef;
+  --color-muted-200: #dee2e6;
+  --color-muted-300: #ced4da;
+  --color-muted-400: #adb5bd;
+  --color-muted-500: #6c757d;
+  --color-muted-600: #495057;
+  --color-muted-700: #343a40;
+  --color-muted-800: #212529;
+  --color-muted-850: #1a1d21;
+  --color-muted-900: #121416;
+  --color-muted-950: #0a0c0e;
+  --color-muted-1000: #000000;
+
+  /* primary (coral/red) */
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-200: #fed7aa;
+  --color-primary-300: #fdba74;
+  --color-primary-400: #fb923c;
+  --color-primary-500: #f97316;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+  --color-primary-800: #9a3412;
+  --color-primary-900: #7c2d12;
+
+  /* info (sky) */
+  --color-info-50: #f0f9ff;
+  --color-info-100: #e0f2fe;
+  --color-info-200: #bae6fd;
+  --color-info-300: #7dd3fc;
+  --color-info-400: #38bdf8;
+  --color-info-500: #0ea5e9;
+  --color-info-600: #0284c7;
+  --color-info-700: #0369a1;
+  --color-info-800: #075985;
+  --color-info-900: #0c4a6e;
+
+  /* success (teal) */
+  --color-success-50: #f0fdfa;
+  --color-success-100: #ccfbf1;
+  --color-success-200: #99f6e4;
+  --color-success-300: #5eead4;
+  --color-success-400: #2dd4bf;
+  --color-success-500: #14b8a6;
+  --color-success-600: #0d9488;
+  --color-success-700: #0f766e;
+  --color-success-800: #115e59;
+  --color-success-900: #134e4a;
+
+  /* warning (amber) */
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+
+  /* danger (rose) */
+  --color-danger-50: #fff1f2;
+  --color-danger-100: #ffe4e6;
+  --color-danger-200: #fecdd3;
+  --color-danger-300: #fda4af;
+  --color-danger-400: #fb7185;
+  --color-danger-500: #f43f5e;
+  --color-danger-600: #e11d48;
+  --color-danger-700: #be123c;
+  --color-danger-800: #9f1239;
+  --color-danger-900: #881337;
+
+  /* Grid template columns fluid */
+  --container-fluid-col-min: 20rem;
+  --container-fluid-col-max: 1fr;
+
+  /* Animations & Keyframes (define as needed) */
+  /* Example: spin-slow, spotlight, etc. */
+  --animate-spin-fast: spin 0.65s linear infinite;
+  --animate-indeterminate: indeterminate 1s cubic-bezier(0.4, 0, 0.2, 1)
+    infinite;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-fade-in: fade-in 0.5s ease-in forwards;
+  --animate-grow-in: grow-in 0.25s ease-in-out forwards;
+  --animate-blink: blink-caret 0.75s steps(17, end) infinite;
+  --animate-typewriter: typing 2s steps(30, end);
+
+  @keyframes indeterminate {
+    0% {
+      margin-left: -10%;
+    }
+    100% {
+      margin-left: 100%;
+    }
+  }
+  @keyframes circle-chart-fill {
+    to {
+      stroke-dasharray: 0 100;
+    }
+  }
+  @keyframes wave {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    25% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4.5);
+      opacity: 0;
+    }
+  }
+  @keyframes fadeInUp {
+    from {
+      transform: translate3d(0, 20px, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  @keyframes fadeInLeft {
+    from {
+      transform: translate3d(20px, 0, 0);
+      opacity: 0;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  @keyframes spinAround {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes grow-in {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  @keyframes blink-caret {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@config '../../tailwind.config.js';
+
+/* Step 3: Load plugins */
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio";
+
+/* Step 4: Define custom variants (from addVariant calls) */
+@variant progress-container (&::-webkit-progress-bar);
+@variant before (&::before);
+@variant after (&::after);
+@variant progress-bar (&::-webkit-progress-value,&::-moz-progress-bar,&::-ms-fill);
+
+/* Step 5: Import existing global CSS */
+@import "./addons/loader.css";
+@import "./addons/apexcharts.css";
+@import "./utilities.css";
+@import "./datatable.css";
+@import "./resizer.css";
+@import "./card.css";
+@import "./animations.css";
+@import "./text.css";
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  .order-input::-webkit-inner-spin-button,
+  .order-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .component-selected {
+    @apply relative;
+  }
+  .component-selected::after {
+    content: " ";
+    @apply border-info-500 border border-dashed w-full h-full absolute left-0 top-0 pointer-events-none block;
+  }
+}
+
+/* Step 6: Custom utilities/classes that were previously in addComponents */
+@utility slimscroll {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.75rem;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+@utility slimscroll-opaque {
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0) !important;
+  }
+}
+@utility mask {
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+@utility mask-hex {
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE4MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNjQuNzg2IDE4MS40Yy05LjE5NiAwLTIwLjA2My02LjY4Ny0yNS4wNzktMTQuMjFMMy43NjIgMTA1LjMzYy01LjAxNi04LjM2LTUuMDE2LTIwLjkgMC0yOS4yNTlsMzUuOTQ1LTYxLjg2QzQ0LjcyMyA1Ljg1MSA1NS41OSAwIDY0Ljc4NiAwaDcxLjA1NWM5LjE5NiAwIDIwLjA2MyA2LjY4OCAyNS4wNzkgMTQuMjExbDM1Ljk0NSA2MS44NmM0LjE4IDguMzYgNC4xOCAyMC44OTkgMCAyOS4yNThsLTM1Ljk0NSA2MS44NmMtNC4xOCA4LjM2LTE1Ljg4MyAxNC4yMTEtMjUuMDc5IDE0LjIxMUg2NC43ODZ6Ii8+PC9zdmc+");
+}
+@utility mask-hexed {
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgyIiBoZWlnaHQ9IjIwMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNLjMgNjUuNDg2YzAtOS4xOTYgNi42ODctMjAuMDYzIDE0LjIxMS0yNS4wNzhsNjEuODYtMzUuOTQ2YzguMzYtNS4wMTYgMjAuODk5LTUuMDE2IDI5LjI1OCAwbDYxLjg2IDM1Ljk0NmM4LjM2IDUuMDE1IDE0LjIxMSAxNS44ODIgMTQuMjExIDI1LjA3OHY3MS4wNTVjMCA5LjE5Ni02LjY4NyAyMC4wNjMtMTQuMjExIDI1LjA3OWwtNjEuODYgMzUuOTQ1Yy04LjM2IDQuMTgtMjAuODk5IDQuMTgtMjkuMjU4IDBsLTYxLjg2LTM1Ljk0NUM2LjE1MSAxNTcuNDQuMyAxNDUuNzM3LjMgMTM2LjU0VjY1LjQ4NnoiLz48L3N2Zz4=");
+}
+@utility mask-deca {
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOTYgMGw1OC43NzkgMTkuMDk4IDM2LjMyNyA1MHY2MS44MDRsLTM2LjMyNyA1MEw5NiAyMDBsLTU4Ljc3OS0xOS4wOTgtMzYuMzI3LTUwVjY5LjA5OGwzNi4zMjctNTB6IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=");
+}
+@utility mask-blob {
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAwIDBDMjAgMCAwIDIwIDAgMTAwczIwIDEwMCAxMDAgMTAwIDEwMC0yMCAxMDAtMTAwUzE4MCAwIDEwMCAweiIvPjwvc3ZnPg==");
+}
+@utility mask-diamond {
+  mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAwIDBsMTAwIDEwMC0xMDAgMTAwTDAgMTAweiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+");
+}
+
+@layer typography {
+  .prose {
+    max-width: inherit;
+    line-height: var(--leading-snug);
+
+    h1 {
+      color: var(--color-zinc-800);
+      margin-top: var(--spacing-8);
+      margin-bottom: var(--spacing-6);
+    }
+    h2 {
+      color: var(--color-zinc-800);
+      margin-top: var(--spacing-8);
+      margin-bottom: var(--spacing-6);
+    }
+    h3 {
+      color: var(--color-zinc-800);
+      margin-top: var(--spacing-6);
+      margin-bottom: var(--spacing-4);
+    }
+    h4 {
+      color: var(--color-zinc-800);
+      margin-top: var(--spacing-6);
+      margin-bottom: var(--spacing-4);
+    }
+    h5 {
+      color: var(--color-prose-headings);
+      margin-top: var(--spacing-6);
+      margin-bottom: var(--spacing-4);
+    }
+    h6 {
+      color: var(--color-prose-headings);
+      margin-top: var(--spacing-6);
+      margin-bottom: var(--spacing-4);
+    }
+    figcaption {
+      margin: 0;
+      padding-top: var(--spacing-4);
+      padding-bottom: var(--spacing-4);
+      text-align: center;
+      background-color: var(--color-omega-800);
+      color: var(--color-omega-400);
+    }
+    /* Adjusting first-child headings */
+    > :is(h1, h2, h3, h4, h5, h6):first-child {
+      margin-top: 0;
+    }
+    figure:first-child > img {
+      margin-top: 0;
+    }
+    blockquote {
+      font-weight: 400; /* normal */
+    }
+    a {
+      text-decoration: none;
+    }
+    th {
+      background-color: var(--color-omega-800);
+    }
+    td,
+    th {
+      padding-top: var(--spacing-2);
+      padding-bottom: var(--spacing-2);
+      padding-right: var(--spacing-4);
+      padding-left: var(--spacing-4);
+    }
+    code {
+      font-weight: 400; /* normal */
+    }
+    code::before,
+    code::after {
+      content: "";
+    }
+    ul > li > *:first-child {
+      margin: 0;
+    }
+    ul > li > *:last-child {
+      margin: 0;
+    }
+  }
+
+  /* Dark mode overrides */
+  .dark .prose {
+    color: var(--color-zinc-200);
+  }
+  .dark .prose strong {
+    color: var(--color-zinc-100);
+  }
+  .dark .prose h1 {
+    color: var(--color-zinc-100);
+  }
+  .dark .prose h2 {
+    color: var(--color-zinc-100);
+  }
+  .dark .prose h3 {
+    color: var(--color-zinc-100);
+  }
+  .dark .prose li {
+    color: var(--color-zinc-300);
+  }
+  .dark .prose h4 {
+    color: var(--color-zinc-200);
+  }
+  .dark .prose h5,
+  .dark .prose h6 {
+    color: var(--color-prose-headings);
+  }
+  .dark .prose figcaption {
+    background-color: var(--color-omega-800);
+    color: var(--color-omega-400);
+  }
+  .dark .prose th {
+    background-color: var(--color-omega-800);
+  }
+  .dark .prose blockquote {
+    font-weight: 400;
+    color: var(--color-zinc-200);
+  }
+  .dark .prose a {
+    text-decoration: none;
+  }
+}
+
+/* Step 7: Your global styles and resets */
+html,
+body {
+  font-family:
+    "Inter",
+    "acumin-pro",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  font-size: 16px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.hidden-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.ease-animation {
+  transition-timing-function: ease-in;
+  transition: 0.2s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.no-transition * {
+  transition-property: none !important;
+  transition-duration: 0 !important;
+}
+
+:root {
+  --editor-background-color: #ffffff;
+  --editor-text-color: #000000;
+  --toolbar-background-color: #f0f0f0;
+  --toolbar-border-color: #cccccc;
+  --editor-border-color: #dddddd;
+}
+
+body.dark-mode {
+  --editor-background-color: #000000;
+  --editor-text-color: #ffffff;
+  --toolbar-background-color: #1a1d21;
+  --toolbar-border-color: #343a40;
+  --editor-border-color: #495057;
+}
+
+.quillEditor {
+  background-color: var(--editor-background-color);
+  color: var(--editor-text-color);
+}
+
+.ql-toolbar.ql-snow {
+  background-color: var(--toolbar-background-color);
+  border: 1px solid var(--toolbar-border-color);
+}
+
+.ql-container.ql-snow {
+  border: 1px solid var(--editor-border-color);
+  color: var(--editor-text-color);
+}
+
+.ql-editor {
+  min-height: 200px;
+}
+
+.ql-editor p {
+  color: var(--editor-text-color);
+}
+
+@keyframes slow-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-slow-gradient {
+  background-size: 200% 200%;
+  animation: slow-gradient 6s ease infinite;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+.custom-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.swiper-slide-active {
+  transform: scale(1.1);
+  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+}
+
+.swiper-slide {
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}
